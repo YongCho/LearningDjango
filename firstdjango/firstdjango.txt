@@ -1,0 +1,35 @@
+# This project is from Linked-in Learning course " Up and Running with Python and Django".
+
+# Create Django project with startup files (manage.py, etc.).
+django-admin startproject firstdjango
+cd firstdjango
+python manage.py
+python manage.py runserver
+
+# Create Django app (A Django project contains one or more apps - blog, forum, wiki, etc.).
+python manage.py startapp inventory
+
+# Define your data models in models.py.
+
+# Generate migrations and do migrate. This creates the database tables corresponding the data models you crated in models.py.
+python manage.py makemigrations
+python manage.py showmigrations
+python manage.py migrate
+
+# Create superuser for the admin page (used ycho/ako).
+python manage.py createsuperuser
+
+# Try http://localhost:8000/admin page.
+# Edit admin.py to have your data models show up on the admin page.
+
+# Try querying ORM through shell.
+python manage.py shell
+> from inventory.models import Item
+> items = Item.objects.all()
+> item = Item.objects.get(id=1)
+> Item.objects.filter(amount=0)
+> Item.objects.exclude(amount=0)
+> Item.objects.exclude(amount=0)[0].title
+> item.title = 'rubber ducky'
+> item.save()
+> exit()
